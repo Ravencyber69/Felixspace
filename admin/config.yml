@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateway
   repo: Ravencyber69/Felixspace
   branch: main
 
