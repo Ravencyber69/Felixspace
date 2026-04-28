@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lee Felix — Official Membership</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E4BC;
+            --gold-dark: #B8860B;
+            --cream: #FAF7F2;
+            --charcoal: #1A1A1A;
+            --soft-black: #0F0F0F;
+            --burgundy: #722F37;
+            --warm-white: #FEFCF8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--soft-black); color: var(--cream); overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--soft-black); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 4px; }
+        nav { position: fixed; top: 0; width: 100%; padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(15,15,15,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212,175,55,0.1); transition: all 0.3s ease; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: var(--gold); letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 0.85rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s ease; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,15,15,0.9) 0%, rgba(114,47,55,0.3) 50%, rgba(15,15,15,0.95) 100%); z-index: 1; }
+        .hero-images { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); opacity: 0.4; filter: blur(2px); }
+        .hero-images img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 0 2rem; }
+        .hero-subtitle { font-size: 0.75rem; letter-spacing: 6px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeInUp 1s ease forwards 0.3s; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0; animation: fadeInUp 1s ease forwards 0.6s; }
+        .hero-desc { font-size: 1.1rem; color: rgba(250,247,242,0.7); line-height: 1.8; margin-bottom: 2.5rem; opacity: 0; animation: fadeInUp 1s ease forwards 0.9s; }
+        .hero-cta { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--soft-black); text-decoration: none; font-weight: 600; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; border-radius: 50px; transition: all 0.4s ease; opacity: 0; animation: fadeInUp 1s ease forwards 1.2s; border: 2px solid transparent; }
+        .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(212,175,55,0.3); background: transparent; color: var(--gold); border-color: var(--gold); }
+        .scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; animation: bounce 2s infinite; }
+        .scroll-indicator i { color: var(--gold); font-size: 1.5rem; }
+        section { padding: 6rem 4rem; position: relative; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-label { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; color: var(--warm-white); margin-bottom: 1rem; }
+        .section-subtitle { color: rgba(250,247,242,0.6); font-size: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+        .gallery { background: var(--charcoal); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 16px; aspect-ratio: 3/4; cursor: pointer; transition: transform 0.4s ease; }
+        .gallery-item:hover { transform: translateY(-8px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 2rem; opacity: 0; transition: opacity 0.4s ease; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-caption { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold-light); }
+        .membership { background: var(--soft-black); }
+        .cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; max-width: 1100px; margin: 0 auto; }
+        .membership-card { background: linear-gradient(145deg, rgba(30,30,30,0.9), rgba(20,20,20,0.9)); border: 1px solid rgba(212,175,55,0.15); border-radius: 24px; padding: 3rem; position: relative; overflow: hidden; transition: all 0.4s ease; }
+        .membership-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(212,175,55,0.03) 0%, transparent 70%); opacity: 0; transition: opacity 0.4s ease; }
+        .membership-card:hover::before { opacity: 1; }
+        .membership-card:hover { transform: translateY(-8px); border-color: rgba(212,175,55,0.4); box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(212,175,55,0.1); }
+        .card-badge { display: inline-block; padding: 0.4rem 1rem; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 50px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+        .card-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--warm-white); margin-bottom: 0.5rem; }
+        .card-price { font-size: 2.5rem; font-weight: 700; color: var(--gold); margin-bottom: 2rem; display: flex; align-items: baseline; gap: 0.25rem; }
+        .card-price span { font-size: 1rem; font-weight: 400; color: rgba(250,247,242,0.5); }
+        .card-features { list-style: none; margin-bottom: 2.5rem; }
+        .card-features li { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; color: rgba(250,247,242,0.8); font-size: 0.95rem; line-height: 1.6; }
+        .card-features li i { color: var(--gold); margin-top: 0.2rem; font-size: 1rem; }
+        .card-btn { display: block; width: 100%; padding: 1.2rem; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--soft-black); text-decoration: none; font-weight: 600; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; border-radius: 12px; text-align: center; transition: all 0.3s ease; border: 2px solid transparent; }
+        .card-btn:hover { background: transparent; color: var(--gold); border-color: var(--gold); transform: scale(1.02); }
+        .premium-card { border-color: rgba(212,175,55,0.3); background: linear-gradient(145deg, rgba(40,30,20,0.9), rgba(20,20,20,0.9)); }
+        .premium-card .card-badge { background: rgba(212,175,55,0.2); border-color: var(--gold); }
+        .premium-tag { position: absolute; top: 2rem; right: -3rem; background: var(--gold); color: var(--soft-black); padding: 0.4rem 3rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transform: rotate(45deg); box-shadow: 0 4px 15px rgba(212,175,55,0.3); }
+        .contact { background: linear-gradient(180deg, var(--soft-black) 0%, var(--charcoal) 100%); text-align: center; }
+        .contact-box { max-width: 600px; margin: 0 auto; padding: 3rem; background: rgba(30,30,30,0.5); border: 1px solid rgba(212,175,55,0.2); border-radius: 24px; backdrop-filter: blur(10px); }
+        .telegram-link { display: inline-flex; align-items: center; gap: 1rem; padding: 1.2rem 2.5rem; background: linear-gradient(135deg, #0088cc, #00a8e6); color: white; text-decoration: none; font-weight: 600; font-size: 1rem; border-radius: 16px; transition: all 0.3s ease; margin-top: 1.5rem; border: 2px solid transparent; }
+        .telegram-link:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,136,204,0.3); background: transparent; border-color: #00a8e6; color: #00a8e6; }
+        .telegram-link i { font-size: 1.5rem; }
+        footer { background: var(--charcoal); padding: 3rem 4rem; text-align: center; border-top: 1px solid rgba(212,175,55,0.1); }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem; }
+        .footer-text { color: rgba(250,247,242,0.4); font-size: 0.85rem; margin-bottom: 1.5rem; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; }
+        .social-links a { color: rgba(250,247,242,0.5); font-size: 1.2rem; transition: color 0.3s ease; }
+        .social-links a:hover { color: var(--gold); }
+        .copyright { color: rgba(250,247,242,0.3); font-size: 0.75rem; letter-spacing: 1px; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%,20%,50%,80%,100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) { nav { padding: 1rem 2rem; } .nav-links { display: none; } section { padding: 4rem 2rem; } .gallery-grid { grid-template-columns: 1fr; } .cards-container { grid-template-columns: 1fr; } .hero-images { grid-template-columns: 1fr; } .hero-images img:nth-child(2), .hero-images img:nth-child(3) { display: none; } }
+        .particles { position: absolute; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+        .particle { position: absolute; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; opacity: 0.3; animation: float 15s infinite; }
+        @keyframes float { 0%,100% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.3; } 90% { opacity: 0.3; } 100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <div class="logo">Lee Felix</div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-images">
+        <img src="https://i.postimg.cc/vmVFxsTh/ff1644a1d2da0d16dd40722526c0946f.jpg" alt="Lee Felix 1">
+        <img src="https://i.postimg.cc/3wv50TNn/0b4b5600d23edf065886c35f8fe413f5.jpg" alt="Lee Felix 2">
+        <img src="https://i.postimg.cc/nLDb9Jrd/2ad2381a15b9146716f8980832d4a2ee.jpg" alt="Lee Felix 3">
+    </div>
+    <div class="hero-bg"></div>
+    <div class="particles" id="particles"></div>
+    <div class="hero-content">
+        <p class="hero-subtitle">Official Fan Membership</p>
+        <h1 class="hero-title">Stay Gold<br>With Felix</h1>
+        <p class="hero-desc">Unlock exclusive access, behind-the-scenes content, and unforgettable moments with Lee Felix. Choose your membership tier and step into the inner circle.</p>
+        <a href="#membership" class="hero-cta">Explore Memberships <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<section class="gallery" id="gallery">
+    <div class="section-header fade-in">
+        <span class="section-label">Moments</span>
+        <h2 class="section-title">Captured in Gold</h2>
+        <p class="section-subtitle">A glimpse into the world of Lee Felix — from stage presence to intimate behind-the-scenes moments.</p>
+    </div>
+    <div class="gallery-grid">
+        <div class="gallery-item fade-in">
+            <img src="https://i.postimg.cc/vmVFxsTh/ff1644a1d2da0d16dd40722526c0946f.jpg" alt="Lee Felix Portrait">
+            <div class="gallery-overlay"><span class="gallery-caption">The Golden Hour</span></div>
+        </div>
+        <div class="gallery-item fade-in">
+            <img src="https://i.postimg.cc/3wv50TNn/0b4b5600d23edf065886c35f8fe413f5.jpg" alt="Lee Felix Performance">
+            <div class="gallery-overlay"><span class="gallery-caption">Stage Presence</span></div>
+        </div>
+        <div class="gallery-item fade-in">
+            <img src="https://i.postimg.cc/nLDb9Jrd/2ad2381a15b9146716f8980832d4a2ee.jpg" alt="Lee Felix Concert">
+            <div class="gallery-overlay"><span class="gallery-caption">Under the Lights</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="membership" id="membership">
+    <div class="section-header fade-in">
+        <span class="section-label">Membership Tiers</span>
+        <h2 class="section-title">Choose Your Experience</h2>
+        <p class="section-subtitle">Two exclusive tiers designed for every level of dedication. From priority access to intimate meet-and-greets.</p>
+    </div>
+    <div class="cards-container">
+        <div class="membership-card fade-in">
+            <span class="card-badge">Essential</span>
+            <h3 class="card-title">Sunshine Card</h3>
+            <div class="card-price">$500<span>/year</span></div>
+            <p style="color: rgba(250,247,242,0.5); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.6;">Perfect for fans who want to stay ahead of the crowd with exclusive early access and limited perks.</p>
+            <ul class="card-features">
+                <li><i class="fas fa-ticket-alt"></i><div><strong style="color: var(--warm-white);">Priority Access</strong><br>Grab concert tickets before they go on sale to the general public</div></li>
+                <li><i class="fas fa-gift"></i><div><strong style="color: var(--warm-white);">Exclusive Merch</strong><br>Access to limited edition items that aren't available anywhere else</div></li>
+                <li><i class="fas fa-star"></i><div><strong style="color: var(--warm-white);">The "Stay Gold" Bonus</strong><br>A special mystery perk we've kept locked just for Sunshine members</div></li>
+            </ul>
+            <a href="https://t.me/leefelixyongblok" target="_blank" class="card-btn">Get Sunshine Access</a>
+        </div>
+        <div class="membership-card premium-card fade-in">
+            <div class="premium-tag">Best Value</div>
+            <span class="card-badge">Ultimate</span>
+            <h3 class="card-title">Yongbok Premium</h3>
+            <div class="card-price">$1,500<span>/year</span></div>
+            <p style="color: rgba(250,247,242,0.5); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.6;">The full experience for the ultimate fan. Everything in Sunshine, plus intimate access and exclusive content.</p>
+            <ul class="card-features">
+                <li><i class="fas fa-check-circle" style="color: var(--gold);"></i><div><strong style="color: var(--gold);">Everything in Sunshine Card</strong></div></li>
+                <li><i class="fas fa-door-open"></i><div><strong style="color: var(--warm-white);">Private Tours</strong><br>Behind-the-scenes look at venues and sets</div></li>
+                <li><i class="fas fa-video"></i><div><strong style="color: var(--warm-white);">Exclusive Content</strong><br>Private videos and personal updates you won't see on social media</div></li>
+                <li><i class="fas fa-handshake"></i><div><strong style="color: var(--warm-white);">Meet & Greets</strong><br>A chance to actually say hi and connect in person</div></li>
+                <li><i class="fas fa-film"></i><div><strong style="color: var(--warm-white);">Hidden Footage</strong><br>Special "pro-cut" videos and behind-the-scenes moments from tours</div></li>
+            </ul>
+            <a href="https://t.me/leefelixyongblok" target="_blank" class="card-btn">Get Premium Access</a>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="section-header fade-in">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Join the Inner Circle</h2>
+        <p class="section-subtitle">Ready to elevate your fan experience? Reach out directly to secure your membership.</p>
+    </div>
+    <div class="contact-box fade-in">
+        <i class="fas fa-paper-plane" style="font-size: 3rem; color: var(--gold); margin-bottom: 1.5rem;"></i>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--warm-white); margin-bottom: 1rem;">Official Telegram</h3>
+        <p style="color: rgba(250,247,242,0.6); line-height: 1.7; margin-bottom: 1.5rem;">Connect directly with the official team to purchase your membership card, ask questions, and get personalized support for your fan journey.</p>
+        <a href="https://t.me/leefelixyongblok" target="_blank" class="telegram-link"><i class="fab fa-telegram"></i>@leefelixyongblok</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">Lee Felix</div>
+    <p class="footer-text">Official Fan Membership Platform</p>
+    <div class="social-links">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="https://t.me/leefelixyongblok" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+    <p class="copyright">© 2026 Lee Felix Official. All rights reserved. Stay Gold.</p>
+</footer>
+
+<script>
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, observerOptions);
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { const currentScroll = window.pageYOffset; if (currentScroll > 100) { navbar.style.background = 'rgba(15,15,15,0.95)'; navbar.style.padding = '1rem 4rem'; } else { navbar.style.background = 'rgba(15,15,15,0.8)'; navbar.style.padding = '1.5rem 4rem'; } });
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 20; i++) { const particle = document.createElement('div'); particle.className = 'particle'; particle.style.left = Math.random() * 100 + '%'; particle.style.animationDelay = Math.random() * 15 + 's'; particle.style.animationDuration = (15 + Math.random() * 10) + 's'; particlesContainer.appendChild(particle); }
+document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
+</script>
+
+</body>
+</html>
